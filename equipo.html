@@ -2,8 +2,8 @@
 <html lang="es">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>OVOCEM | Nuestro Equipo</title>
 
@@ -15,1132 +15,1310 @@
 <style>
 
 :root{
-    --bg:#000000;
-    --surface:rgba(255,255,255,0.03);
-    --surface-hover:rgba(255,255,255,0.06);
-
-    --border:rgba(255,255,255,0.08);
-    --border-hover:rgba(255,255,255,0.18);
-
-    --green:#10B981;
-    --green-soft:rgba(16,185,129,0.08);
-
-    --white:#FFFFFF;
-    --gray:#86868B;
-
-    --radius:28px;
-
-    --transition:cubic-bezier(0.16,1,0.3,1);
+--green:#22c55e;
+--green-soft:#4ade80;
+--bg:#050505;
+--surface:rgba(255,255,255,.04);
+--surface-hover:rgba(255,255,255,.07);
+--border:rgba(255,255,255,.08);
+--text:#ffffff;
+--muted:#9ca3af;
+--radius:28px;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 html{
-    scroll-behavior:smooth;
-    background:var(--bg);
+scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
-    color:var(--white);
-    font-family:'Inter',sans-serif;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-    position:relative;
+
+background:
+radial-gradient(circle at top left,#22c55e15,transparent 25%),
+radial-gradient(circle at bottom right,#22c55e10,transparent 25%),
+#050505;
+
+color:var(--text);
+overflow-x:hidden;
+
 }
 
-/* ========================================= */
-/* BACKGROUND                                */
-/* ========================================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size:42px 42px;
-    z-index:0;
-    pointer-events:none;
-}
-
-.ambient{
-    position:fixed;
-    border-radius:50%;
-    filter:blur(160px);
-    pointer-events:none;
-    z-index:0;
-}
-
-.ambient.one{
-    width:500px;
-    height:500px;
-    top:-140px;
-    left:10%;
-    background:radial-gradient(circle,var(--green-soft) 0%, transparent 70%);
-}
-
-.ambient.two{
-    width:600px;
-    height:600px;
-    bottom:-100px;
-    right:-120px;
-    background:radial-gradient(circle,rgba(16,185,129,0.06) 0%, transparent 70%);
-}
-
-/* ========================================= */
-/* NAVBAR                                    */
-/* ========================================= */
+/* ===== NAVBAR ===== */
 
 header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:100;
-    padding:24px 20px;
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+padding:20px;
+
 }
 
-.nav{
-    max-width:1100px;
-    margin:auto;
+nav{
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+max-width:1200px;
+margin:auto;
 
-    padding:14px 26px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-    background:rgba(10,10,10,0.55);
-    border:1px solid var(--border);
+padding:18px 28px;
 
-    border-radius:999px;
+background:rgba(255,255,255,.04);
 
-    backdrop-filter:blur(30px);
-    -webkit-backdrop-filter:blur(30px);
+backdrop-filter:blur(18px);
 
-    transition:all .4s ease;
+border:1px solid rgba(255,255,255,.08);
 
-    position:relative;
-}
+border-radius:24px;
 
-.nav:hover{
-    border-color:rgba(255,255,255,0.16);
 }
 
 .logo{
-    text-decoration:none;
-    color:var(--white);
 
-    font-size:14px;
-    font-weight:700;
+font-size:18px;
+font-weight:700;
+color:white;
+text-decoration:none;
 
-    letter-spacing:0.3em;
 }
 
 .nav-links{
-    list-style:none;
-    display:flex;
-    gap:30px;
+
+display:flex;
+gap:30px;
+list-style:none;
+
 }
 
 .nav-links a{
-    text-decoration:none;
-    color:var(--gray);
 
-    font-size:13px;
-    font-weight:500;
+text-decoration:none;
+color:#d4d4d8;
+font-size:14px;
+transition:.3s;
 
-    transition:.3s ease;
 }
 
-.nav-links a:hover{
-    color:var(--white);
-}
-
+.nav-links a:hover,
 .nav-links a.active{
-    color:var(--green);
+
+color:var(--green);
+
 }
 
-/* ========================================= */
-/* MOBILE MENU                               */
-/* ========================================= */
+.menu-btn{
 
-.menu-toggle{
-    display:none;
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
 
-    width:46px;
-    height:46px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    background:rgba(255,255,255,0.03);
-
-    cursor:pointer;
-
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-
-    gap:5px;
-
-    transition:.3s ease;
-}
-
-.menu-toggle:hover{
-    background:rgba(255,255,255,0.08);
-}
-
-.menu-toggle span{
-    width:20px;
-    height:2px;
-    background:white;
-    border-radius:999px;
-    transition:.3s ease;
 }
 
 .mobile-menu{
-    position:absolute;
 
-    top:85px;
-    left:0;
-    width:100%;
+display:none;
+flex-direction:column;
+gap:18px;
+padding-top:20px;
 
-    background:rgba(10,10,10,0.96);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    border-radius:28px;
-
-    padding:20px;
-
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-
-    opacity:0;
-    visibility:hidden;
-
-    transform:translateY(-10px);
-
-    transition:.35s ease;
-
-    backdrop-filter:blur(30px);
-}
-
-.mobile-menu.active{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
 }
 
 .mobile-menu a{
-    color:white;
-    text-decoration:none;
 
-    font-size:16px;
-    font-weight:600;
+text-decoration:none;
+color:#d4d4d8;
+font-size:15px;
 
-    padding:14px 10px;
-
-    border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.mobile-menu a:last-child{
-    border-bottom:none;
-}
-
-.mobile-menu a.active{
-    color:var(--green);
-}
-
-/* ========================================= */
-/* HERO                                      */
-/* ========================================= */
+/* ===== HERO ===== */
 
 .hero{
-    min-height:100vh;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+min-height:100vh;
 
-    text-align:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 
-    padding:180px 24px 100px;
+padding:140px 24px 80px;
 
-    position:relative;
-    z-index:1;
 }
 
-.hero-eyebrow{
-    color:var(--green);
+.hero-content{
 
-    text-transform:uppercase;
+max-width:900px;
 
-    letter-spacing:0.3em;
+}
 
-    font-size:12px;
-    font-weight:700;
+.hero-tag{
 
-    margin-bottom:24px;
+font-size:12px;
+letter-spacing:6px;
+text-transform:uppercase;
+color:var(--green);
+margin-bottom:24px;
 
-    opacity:0;
-
-    transform:translateY(20px);
-
-    animation:heroFade 1s var(--transition) forwards;
 }
 
 .hero h1{
-    font-size:clamp(48px,8vw,96px);
 
-    line-height:0.95;
+font-size:clamp(42px,8vw,90px);
+line-height:1;
+font-weight:800;
+letter-spacing:-4px;
+margin-bottom:30px;
 
-    font-weight:800;
-
-    letter-spacing:-0.06em;
-
-    margin-bottom:28px;
-
-    opacity:0;
-
-    transform:translateY(25px);
-
-    animation:heroFade 1s var(--transition) forwards;
-    animation-delay:.15s;
 }
 
 .hero h1 span{
-    background:linear-gradient(180deg,#ffffff 10%, #9ca3af 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+
+background:linear-gradient(90deg,#fff,#4ade80);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
 }
 
-.hero-sub{
-    max-width:760px;
+.hero p{
 
-    margin:auto;
+max-width:720px;
+margin:auto;
 
-    color:var(--gray);
+font-size:clamp(16px,2vw,22px);
+line-height:1.7;
 
-    font-size:20px;
+color:var(--muted);
 
-    line-height:1.6;
-
-    font-weight:400;
-
-    opacity:0;
-
-    transform:translateY(25px);
-
-    animation:heroFade 1s var(--transition) forwards;
-    animation-delay:.3s;
 }
 
-@keyframes heroFade{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* ========================================= */
-/* SECTIONS                                  */
-/* ========================================= */
+/* ===== SECTION ===== */
 
 .section{
-    position:relative;
-    z-index:1;
 
-    max-width:1240px;
+max-width:1200px;
+margin:auto;
+padding:100px 24px;
 
-    margin:auto;
-
-    padding:110px 24px;
 }
 
 .section-label{
-    text-transform:uppercase;
 
-    letter-spacing:0.3em;
+text-transform:uppercase;
+letter-spacing:5px;
+font-size:12px;
+color:var(--green);
+margin-bottom:16px;
 
-    color:var(--gray);
-
-    font-size:12px;
-
-    font-weight:700;
-
-    margin-bottom:14px;
 }
 
 .section-title{
-    font-size:clamp(34px,5vw,62px);
 
-    line-height:1.02;
+font-size:clamp(32px,5vw,56px);
+font-weight:800;
+line-height:1.1;
+margin-bottom:60px;
 
-    letter-spacing:-0.05em;
-
-    font-weight:800;
-
-    margin-bottom:70px;
 }
 
-/* ========================================= */
-/* DIRECTOR CARD                             */
-/* ========================================= */
+/* ===== ORGANIGRAMA ===== */
 
 .org-wrapper{
-    width:100%;
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:40px;
+
 }
+
+/* ===== DIRECTOR ===== */
 
 .director-card{
-    width:100%;
-    max-width:420px;
 
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,0.05) 0%,
-        rgba(255,255,255,0.015) 100%
-    );
+width:100%;
+max-width:380px;
 
-    border:1px solid rgba(16,185,129,0.15);
+padding:40px;
 
-    border-radius:36px;
+background:rgba(255,255,255,.04);
 
-    padding:48px;
+backdrop-filter:blur(18px);
 
-    text-align:center;
+border:1px solid rgba(34,197,94,.2);
 
-    backdrop-filter:blur(18px);
+border-radius:32px;
 
-    transition:all .7s var(--transition);
+text-align:center;
 
-    position:relative;
+transition:.4s;
 
-    overflow:hidden;
-}
-
-.director-card::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top right,
-    rgba(16,185,129,0.08),
-    transparent 50%);
-
-    opacity:0;
-
-    transition:opacity .6s ease;
 }
 
 .director-card:hover{
-    transform:translateY(-10px);
 
-    border-color:rgba(16,185,129,0.4);
+transform:translateY(-8px);
 
-    box-shadow:
-    0 30px 80px rgba(0,0,0,0.7),
-    0 0 60px rgba(16,185,129,0.08);
+border-color:#22c55e;
+
+box-shadow:0 20px 60px rgba(0,0,0,.4);
+
 }
 
-.director-card:hover::before{
-    opacity:1;
+.photo{
+
+width:120px;
+height:120px;
+border-radius:50%;
+overflow:hidden;
+margin:auto auto 24px;
+
+border:2px solid rgba(255,255,255,.1);
+
+background:#111;
+
 }
 
-/* ========================================= */
-/* PHOTO                                     */
-/* ========================================= */
+.photo img{
 
-.photo-wrap{
-    width:120px;
-    height:120px;
+width:100%;
+height:100%;
+object-fit:cover;
 
-    margin:auto auto 24px;
-
-    position:relative;
-}
-
-.member-photo{
-    width:100%;
-    height:100%;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    background:#161616;
-
-    border:1px solid rgba(255,255,255,0.12);
-
-    position:relative;
-
-    z-index:2;
-}
-
-.member-photo img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:transform .6s ease, filter .6s ease;
-
-    filter:grayscale(20%);
-}
-
-.team-card:hover img,
-.director-card:hover img{
-    transform:scale(1.05);
-    filter:grayscale(0%);
-}
-
-.avatar-fallback{
-    width:100%;
-    height:100%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:linear-gradient(135deg,#232323,#111111);
-
-    font-size:28px;
-    font-weight:700;
 }
 
 .member-name{
-    font-size:22px;
-    font-weight:700;
 
-    letter-spacing:-0.03em;
+font-size:24px;
+font-weight:700;
+margin-bottom:8px;
 
-    margin-bottom:8px;
 }
 
 .member-role{
-    color:var(--green);
 
-    font-size:11px;
-    font-weight:700;
+font-size:12px;
+letter-spacing:3px;
+text-transform:uppercase;
+color:var(--green);
+margin-bottom:8px;
 
-    text-transform:uppercase;
-
-    letter-spacing:0.2em;
-
-    margin-bottom:8px;
 }
 
 .member-dept{
-    color:var(--gray);
 
-    font-size:14px;
+color:var(--muted);
+
 }
 
-/* ========================================= */
-/* TREE CONNECTOR                            */
-/* ========================================= */
-
-.tree{
-    width:100%;
-    max-width:900px;
-    margin:18px 0 26px;
-}
-
-.tree line{
-    stroke:rgba(255,255,255,0.08);
-    stroke-width:1.3;
-}
-
-.tree circle{
-    fill:var(--green);
-}
-
-/* ========================================= */
-/* TEAM GRID                                 */
-/* ========================================= */
+/* ===== TEAM GRID ===== */
 
 .team-grid{
-    width:100%;
 
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+width:100%;
 
-    gap:22px;
 }
 
 .team-card{
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,0.03),
-        rgba(255,255,255,0.01)
-    );
 
-    border:1px solid var(--border);
+background:rgba(255,255,255,.03);
 
-    border-radius:32px;
+border:1px solid var(--border);
 
-    padding:40px 26px;
+border-radius:28px;
 
-    text-align:center;
+padding:36px 24px;
 
-    transition:all .7s var(--transition);
+text-align:center;
 
-    backdrop-filter:blur(14px);
+transition:.4s;
 
-    position:relative;
-
-    overflow:hidden;
-}
-
-.team-card::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top left,
-    rgba(255,255,255,0.04),
-    transparent 50%);
-
-    opacity:0;
-
-    transition:opacity .5s ease;
 }
 
 .team-card:hover{
-    transform:translateY(-8px);
 
-    border-color:var(--border-hover);
+transform:translateY(-8px);
 
-    background:rgba(255,255,255,0.05);
+border-color:#22c55e55;
 
-    box-shadow:0 25px 60px rgba(0,0,0,0.55);
+background:rgba(255,255,255,.05);
+
 }
 
-.team-card:hover::before{
-    opacity:1;
+.team-card .photo{
+
+width:95px;
+height:95px;
+
 }
 
-/* ========================================= */
-/* PHILOSOPHY                                */
-/* ========================================= */
+/* ===== FILOSOFIA ===== */
 
 .philosophy{
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,0.04),
-        rgba(255,255,255,0.015)
-    );
 
-    border:1px solid var(--border);
+padding:60px;
 
-    border-radius:42px;
+background:rgba(255,255,255,.04);
 
-    padding:70px 80px;
+border:1px solid rgba(255,255,255,.08);
 
-    backdrop-filter:blur(16px);
+border-radius:40px;
+
 }
 
 .philosophy h2{
-    font-size:clamp(30px,4vw,52px);
 
-    line-height:1.1;
+font-size:clamp(30px,5vw,52px);
+line-height:1.15;
+margin-bottom:24px;
 
-    letter-spacing:-0.05em;
-
-    margin-bottom:26px;
 }
 
 .philosophy p{
-    color:var(--gray);
 
-    font-size:18px;
+font-size:18px;
+line-height:1.8;
+color:var(--muted);
 
-    line-height:1.7;
-
-    max-width:900px;
 }
 
-/* ========================================= */
-/* SPECS                                     */
-/* ========================================= */
+/* ===== ESPECIALIDADES ===== */
 
 .spec-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:18px;
+
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:20px;
+
 }
 
 .spec-card{
-    background:var(--surface);
 
-    border:1px solid var(--border);
+padding:32px 24px;
 
-    border-radius:24px;
+background:rgba(255,255,255,.03);
 
-    padding:34px 24px;
+border:1px solid rgba(255,255,255,.08);
 
-    transition:all .5s var(--transition);
+border-radius:24px;
 
-    text-align:center;
+text-align:center;
+
+transition:.4s;
+
 }
 
 .spec-card:hover{
-    transform:translateY(-6px);
 
-    background:var(--surface-hover);
+transform:translateY(-6px);
 
-    border-color:var(--border-hover);
+border-color:#22c55e55;
+
 }
 
 .spec-icon{
-    width:54px;
-    height:54px;
 
-    border-radius:50%;
+font-size:32px;
+margin-bottom:20px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    margin:0 auto 20px;
-
-    background:rgba(255,255,255,0.04);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    font-size:22px;
 }
 
 .spec-card h3{
-    font-size:15px;
-    margin-bottom:6px;
+
+margin-bottom:10px;
+font-size:18px;
+
 }
 
 .spec-card p{
-    font-size:13px;
-    color:var(--gray);
+
+color:var(--muted);
+font-size:14px;
+
 }
 
-/* ========================================= */
-/* STATS                                     */
-/* ========================================= */
+/* ===== STATS ===== */
 
 .stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:22px;
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+
 }
 
 .stat-card{
-    background:var(--surface);
 
-    border:1px solid var(--border);
+padding:40px 28px;
 
-    border-radius:30px;
+background:rgba(255,255,255,.03);
 
-    padding:42px 28px;
+border:1px solid rgba(255,255,255,.08);
 
-    transition:.5s ease;
+border-radius:28px;
+
 }
 
-.stat-card:hover{
-    transform:translateY(-6px);
+.stat-number{
 
-    border-color:var(--border-hover);
+font-size:64px;
+font-weight:800;
+margin-bottom:12px;
 
-    background:var(--surface-hover);
-}
-
-.stat-num{
-    font-size:64px;
-
-    line-height:1;
-
-    font-weight:800;
-
-    letter-spacing:-0.06em;
-
-    margin-bottom:10px;
 }
 
 .stat-label{
-    color:var(--gray);
 
-    font-size:14px;
+color:var(--muted);
+
 }
 
-/* ========================================= */
-/* VALUES                                    */
-/* ========================================= */
+/* ===== VALORES ===== */
 
 .values-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+
 }
 
 .value-card{
-    background:var(--surface);
 
-    border:1px solid var(--border);
+padding:24px;
 
-    border-radius:22px;
+border-radius:20px;
 
-    padding:26px;
+background:rgba(255,255,255,.03);
 
-    font-size:15px;
+border:1px solid rgba(255,255,255,.08);
 
-    font-weight:600;
+font-weight:600;
 
-    transition:all .4s ease;
+transition:.4s;
+
 }
 
 .value-card:hover{
-    background:var(--surface-hover);
 
-    border-color:var(--border-hover);
+transform:translateY(-4px);
 
-    transform:scale(1.02);
+border-color:#22c55e55;
+
 }
 
-/* ========================================= */
-/* CTA                                       */
-/* ========================================= */
+/* ===== CTA ===== */
 
 .cta{
-    text-align:center;
 
-    padding:170px 24px;
+text-align:center;
+padding:140px 24px;
 
-    position:relative;
-    z-index:1;
 }
 
 .cta h2{
-    font-size:clamp(42px,6vw,82px);
 
-    line-height:0.95;
+font-size:clamp(38px,6vw,72px);
+line-height:1.05;
+font-weight:800;
+margin-bottom:24px;
 
-    letter-spacing:-0.06em;
-
-    margin-bottom:24px;
 }
 
 .cta p{
-    color:var(--gray);
 
-    font-size:20px;
+font-size:20px;
+color:var(--muted);
+margin-bottom:40px;
 
-    margin-bottom:40px;
 }
 
 .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
 
-    padding:16px 32px;
+display:inline-flex;
+align-items:center;
+gap:10px;
 
-    border-radius:999px;
+padding:16px 32px;
 
-    background:var(--white);
+background:var(--green);
 
-    color:#000;
+color:black;
 
-    text-decoration:none;
+font-weight:700;
 
-    font-weight:700;
+border-radius:20px;
 
-    transition:all .5s var(--transition);
+text-decoration:none;
+
+transition:.3s;
+
 }
 
 .btn:hover{
-    transform:scale(1.03);
 
-    background:#f3f3f3;
+transform:translateY(-4px);
+
+box-shadow:0 10px 30px rgba(34,197,94,.4);
+
 }
 
-/* ========================================= */
-/* FOOTER                                    */
-/* ========================================= */
+/* ===== FOOTER ===== */
 
 footer{
-    position:relative;
-    z-index:1;
 
-    border-top:1px solid rgba(255,255,255,0.06);
+border-top:1px solid rgba(255,255,255,.08);
 
-    padding:40px 24px;
+padding:50px 24px;
+
 }
 
 .footer-inner{
-    max-width:1240px;
 
-    margin:auto;
+max-width:1200px;
+margin:auto;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:30px;
 
-    gap:20px;
-}
+flex-wrap:wrap;
 
-.footer-logo{
-    color:var(--white);
-
-    text-decoration:none;
-
-    font-size:14px;
-    font-weight:700;
-
-    letter-spacing:0.2em;
 }
 
 .footer-inner p{
-    color:var(--gray);
 
-    font-size:13px;
+color:var(--muted);
+
 }
 
-/* ========================================= */
-/* REVEAL                                    */
-/* ========================================= */
+/* ===== ANIMACIONES ===== */
 
-.reveal{
-    opacity:0;
+.fade{
 
-    transform:translateY(40px) scale(.98);
+opacity:0;
+transform:translateY(60px);
+transition:1s;
 
-    filter:blur(8px);
-
-    transition:
-    opacity 1s var(--transition),
-    transform 1s var(--transition),
-    filter 1s var(--transition);
 }
 
-.reveal.active{
-    opacity:1;
+.fade.show{
 
-    transform:translateY(0) scale(1);
+opacity:1;
+transform:translateY(0);
 
-    filter:blur(0);
 }
 
-.delay-1{ transition-delay:.1s; }
-.delay-2{ transition-delay:.2s; }
-.delay-3{ transition-delay:.3s; }
-.delay-4{ transition-delay:.4s; }
-
-/* ========================================= */
-/* RESPONSIVE                                */
-/* ========================================= */
+/* ===== RESPONSIVE ===== */
 
 @media(max-width:1100px){
 
-    .team-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+.team-grid{
 
-    .spec-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
+grid-template-columns:repeat(2,1fr);
 
-    .values-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+}
+
+.spec-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.values-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
 }
 
 @media(max-width:768px){
 
-    header{
-        padding:18px 14px;
-    }
+nav{
 
-    .nav{
-        padding:14px 18px;
-    }
+padding:16px 20px;
 
-    .nav-links{
-        display:none;
-    }
+}
 
-    .menu-toggle{
-        display:flex;
-    }
+.nav-links{
 
-    .section{
-        padding:80px 24px;
-    }
+display:none;
 
-    .hero{
-        padding-top:160px;
-    }
+}
 
-    .hero-sub{
-        font-size:18px;
-    }
+.menu-btn{
 
-    .team-grid,
-    .spec-grid,
-    .stats-grid,
-    .values-grid{
-        grid-template-columns:1fr;
-    }
+display:block;
 
-    .philosophy{
-        padding:42px 28px;
-    }
+}
 
-    .tree{
-        display:none;
-    }
+.mobile-menu.active{
 
-    .footer-inner{
-        flex-direction:column;
-        text-align:center;
-    }
+display:flex;
+
+}
+
+.hero{
+
+padding-top:180px;
+
+}
+
+.hero h1{
+
+letter-spacing:-2px;
+
+}
+
+.section{
+
+padding:80px 20px;
+
+}
+
+.team-grid,
+.spec-grid,
+.stats-grid,
+.values-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.director-card{
+
+padding:32px 24px;
+
+}
+
+.philosophy{
+
+padding:40px 24px;
+
+}
+
+.philosophy p{
+
+font-size:16px;
+
+}
+
+.cta{
+
+padding:100px 20px;
+
+}
+
+.cta p{
+
+font-size:17px;
+
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="ambient one"></div>
-<div class="ambient two"></div>
-
-<!-- ====================================== -->
-<!-- NAVBAR                                 -->
-<!-- ====================================== -->
+<!-- NAVBAR -->
 
 <header>
 
-    <nav class="nav">
+<nav>
 
-        <a href="index.html" class="logo">OVOCEM</a>
+<a href="index.html" class="logo">
 
-        <ul class="nav-links">
-            <li><a href="historia.html">Historia</a></li>
-            <li><a href="tecnologia.html">Tecnología</a></li>
-            <li><a href="equipo.html" class="active">Equipo</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
+OVOCEM
 
-        <!-- BOTÓN MOBILE -->
+</a>
 
-        <button class="menu-toggle" id="menuToggle">
+<ul class="nav-links">
 
-            <span></span>
-            <span></span>
-            <span></span>
+<li><a href="historia.html">Historia</a></li>
+<li><a href="tecnologia.html">Tecnología</a></li>
+<li><a href="equipo.html" class="active">Equipo</a></li>
+<li><a href="contacto.html">Contacto</a></li>
 
-        </button>
+</ul>
 
-        <!-- MENÚ MOBILE -->
+<button class="menu-btn" id="menuBtn">
 
-        <div class="mobile-menu" id="mobileMenu">
+☰
 
-            <a href="historia.html">Historia</a>
-            <a href="tecnologia.html">Tecnología</a>
-            <a href="equipo.html" class="active">Equipo</a>
-            <a href="contacto.html">Contacto</a>
+</button>
 
-        </div>
+</nav>
 
-    </nav>
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="historia.html">Historia</a>
+<a href="tecnologia.html">Tecnología</a>
+<a href="equipo.html">Equipo</a>
+<a href="contacto.html">Contacto</a>
+
+</div>
 
 </header>
 
-<!-- ====================================== -->
-<!-- HERO                                   -->
-<!-- ====================================== -->
+<!-- HERO -->
 
 <section class="hero">
 
-    <div>
+<div class="hero-content fade">
 
-        <div class="hero-eyebrow">
-            Nuestro Equipo
-        </div>
+<div class="hero-tag">
 
-        <h1>
-            Las personas<br>
-            detrás de <span>OVOCEM</span>
-        </h1>
+NUESTRO EQUIPO
 
-        <p class="hero-sub">
-            Un ecosistema multidisciplinario enfocado en redefinir la construcción sustentable mediante innovación, tecnología y biotecnología aplicada.
-        </p>
+</div>
 
-    </div>
+<h1>
+
+Las personas detrás de
+
+<span>
+
+OVOCEM
+
+</span>
+
+</h1>
+
+<p>
+
+Un ecosistema multidisciplinario enfocado en el desarrollo de soluciones sostenibles para la industria de la construcción.
+
+</p>
+
+</div>
 
 </section>
 
-<!-- AQUÍ SIGUE TODO TU CONTENIDO IGUAL -->
+<!-- ORGANIGRAMA -->
 
-<!-- ====================================== -->
-<!-- SCRIPT                                 -->
-<!-- ====================================== -->
+<section class="section">
+
+<div class="section-label">
+
+ESTRUCTURA
+
+</div>
+
+<h2 class="section-title">
+
+Equipo Corporativo
+
+</h2>
+
+<div class="org-wrapper">
+
+<div class="director-card fade">
+
+<div class="photo">
+
+<img src="fotos/ashley.jpg" alt="Ashley Athena">
+
+</div>
+
+<div class="member-name">
+
+Ashley Athena
+
+</div>
+
+<div class="member-role">
+
+Dirección General
+
+</div>
+
+<div class="member-dept">
+
+Gestión Empresarial
+
+</div>
+
+</div>
+
+<div class="team-grid">
+
+<div class="team-card fade">
+
+<div class="photo">
+
+<img src="LOGO.png" alt="Hilario Emmanuel">
+
+</div>
+
+<div class="member-name">
+
+Hilario Emmanuel
+
+</div>
+
+<div class="member-role">
+
+Administración
+
+</div>
+
+<div class="member-dept">
+
+Operaciones
+
+</div>
+
+</div>
+
+<div class="team-card fade">
+
+<div class="photo">
+
+<img src="LOGO.png" alt="Ricardo Jimenez">
+
+</div>
+
+<div class="member-name">
+
+Ricardo Jimenez
+
+</div>
+
+<div class="member-role">
+
+Desarrollo
+
+</div>
+
+<div class="member-dept">
+
+Innovación
+
+</div>
+
+</div>
+
+<div class="team-card fade">
+
+<div class="photo">
+
+<img src="LOGO.png" alt="Jesus Emanuel">
+
+</div>
+
+<div class="member-name">
+
+Jesus Emanuel
+
+</div>
+
+<div class="member-role">
+
+Producción
+
+</div>
+
+<div class="member-dept">
+
+Procesos de Calidad
+
+</div>
+
+</div>
+
+<div class="team-card fade">
+
+<div class="photo">
+
+<img src="LOGO.png" alt="Carlos Aguilar">
+
+</div>
+
+<div class="member-name">
+
+Carlos Aguilar
+
+</div>
+
+<div class="member-role">
+
+Tecnología
+
+</div>
+
+<div class="member-dept">
+
+Sistemas Digitales
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FILOSOFIA -->
+
+<section class="section">
+
+<div class="philosophy fade">
+
+<div class="section-label">
+
+FILOSOFÍA
+
+</div>
+
+<h2>
+
+La innovación surge cuando diferentes talentos trabajan hacia una misma visión.
+
+</h2>
+
+<p>
+
+Nuestro equipo integra conocimientos empresariales, tecnológicos y de innovación sostenible. La colaboración constante permite transformar ideas ecológicas en soluciones reales para la construcción moderna.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ESPECIALIDADES -->
+
+<section class="section">
+
+<div class="section-label">
+
+CAPACIDADES
+
+</div>
+
+<h2 class="section-title">
+
+Áreas de Especialización
+
+</h2>
+
+<div class="spec-grid">
+
+<div class="spec-card fade">
+
+<div class="spec-icon">🧭</div>
+
+<h3>Gestión</h3>
+
+<p>Dirección estratégica empresarial.</p>
+
+</div>
+
+<div class="spec-card fade">
+
+<div class="spec-icon">⚙️</div>
+
+<h3>Operaciones</h3>
+
+<p>Administración de procesos internos.</p>
+
+</div>
+
+<div class="spec-card fade">
+
+<div class="spec-icon">💡</div>
+
+<h3>Innovación</h3>
+
+<p>Desarrollo de nuevos materiales.</p>
+
+</div>
+
+<div class="spec-card fade">
+
+<div class="spec-icon">🏭</div>
+
+<h3>Producción</h3>
+
+<p>Procesos industriales y calidad.</p>
+
+</div>
+
+<div class="spec-card fade">
+
+<div class="spec-icon">💻</div>
+
+<h3>Tecnología</h3>
+
+<p>Sistemas digitales y comunicación.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="section">
+
+<div class="section-label">
+
+OVOCEM
+
+</div>
+
+<h2 class="section-title">
+
+OVOCEM en números
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="stat-card fade">
+
+<div class="stat-number">
+
+5
+
+</div>
+
+<div class="stat-label">
+
+Fundadores
+
+</div>
+
+</div>
+
+<div class="stat-card fade">
+
+<div class="stat-number">
+
+8
+
+</div>
+
+<div class="stat-label">
+
+Valores Corporativos
+
+</div>
+
+</div>
+
+<div class="stat-card fade">
+
+<div class="stat-number">
+
+1
+
+</div>
+
+<div class="stat-label">
+
+Misión Compartida
+
+</div>
+
+</div>
+
+<div class="stat-card fade">
+
+<div class="stat-number">
+
+100%
+
+</div>
+
+<div class="stat-label">
+
+Innovación Sustentable
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VALORES -->
+
+<section class="section">
+
+<div class="section-label">
+
+PRINCIPIOS
+
+</div>
+
+<h2 class="section-title">
+
+Nuestros Valores
+
+</h2>
+
+<div class="values-grid">
+
+<div class="value-card fade">Innovación</div>
+
+<div class="value-card fade">Sostenibilidad</div>
+
+<div class="value-card fade">Calidad</div>
+
+<div class="value-card fade">Responsabilidad</div>
+
+<div class="value-card fade">Compromiso</div>
+
+<div class="value-card fade">Trabajo en Equipo</div>
+
+<div class="value-card fade">Integridad</div>
+
+<div class="value-card fade">Visión de Futuro</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta fade">
+
+<h2>
+
+Las grandes ideas nacen de grandes equipos.
+
+</h2>
+
+<p>
+
+Conoce más sobre nuestro proyecto y su impacto ambiental.
+
+</p>
+
+<a href="contacto.html" class="btn">
+
+Contactar OVOCEM
+
+</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+
+<h3>
+
+OVOCEM
+
+</h3>
+
+<p>
+
+Construyendo un futuro sostenible.
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+Instituto Tecnológico de Pochutla
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+San Pedro Pochutla, Oaxaca
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
 
 <script>
 
-const revealElements = document.querySelectorAll('.reveal');
+/* MENU MOVIL */
 
-const revealOnScroll = () => {
-
-    const triggerBottom = window.innerHeight * 0.88;
-
-    revealElements.forEach(element => {
-
-        const top = element.getBoundingClientRect().top;
-
-        if(top < triggerBottom){
-            element.classList.add('active');
-        }
-
-    });
-
-};
-
-window.addEventListener('scroll', revealOnScroll);
-
-window.addEventListener('load', revealOnScroll);
-
-/* ========================= */
-/* MOBILE MENU               */
-/* ========================= */
-
-const menuToggle = document.getElementById('menuToggle');
+const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
-menuToggle.addEventListener('click', () => {
+menuBtn.addEventListener('click',()=>{
 
-    mobileMenu.classList.toggle('active');
+mobileMenu.classList.toggle('active');
+
+});
+
+/* ANIMACIONES */
+
+const observer = new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('show');
+
+}
+
+});
+
+},{threshold:.1});
+
+document.querySelectorAll('.fade').forEach(el=>{
+
+observer.observe(el);
 
 });
 
 </script>
 
 </body>
+
 </html>

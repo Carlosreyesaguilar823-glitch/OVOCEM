@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OVOCEM | Innovación Sostenible para la Construcción</title>
 
-<title>OVOCEM | Contacto</title>
+<meta name="description"
+content="OVOCEM desarrolla materiales sostenibles de construcción mediante biotecnología aplicada y reutilización de residuos orgánicos." />
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
 <style>
 
 :root{
 --green:#22c55e;
---green-soft:rgba(34,197,94,.08);
+--green-soft:#4ade80;
 --bg:#050505;
---card:#0c0c0c;
+--surface:rgba(255,255,255,.04);
 --border:rgba(255,255,255,.08);
 --text:#ffffff;
---muted:#9ca3af;
---transition:cubic-bezier(.16,1,.3,1);
+--muted:#a1a1aa;
 }
 
 *{
@@ -33,15 +35,11 @@ box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 
 background:
-radial-gradient(circle at top left,#22c55e18,transparent 28%),
-radial-gradient(circle at bottom right,#22c55e10,transparent 25%),
+radial-gradient(circle at top left,rgba(34,197,94,.12),transparent 25%),
+radial-gradient(circle at bottom right,rgba(34,197,94,.08),transparent 25%),
 #050505;
 
 color:white;
@@ -49,62 +47,122 @@ overflow-x:hidden;
 
 }
 
-/* =========================
-AMBIENT LIGHTS
-========================= */
+/* ===== GRID ===== */
 
-.ambient{
-position:fixed;
-border-radius:50%;
-filter:blur(140px);
-pointer-events:none;
-z-index:0;
-opacity:.8;
+.grid-bg{
+
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+background-size:50px 50px;
+
 }
 
-.ambient.one{
-width:500px;
-height:500px;
-top:-100px;
-left:-80px;
-background:rgba(34,197,94,.08);
+/* ===== NAVBAR ===== */
+
+.navbar{
+
+background:rgba(10,10,10,.55);
+
+backdrop-filter:blur(24px);
+
+border:1px solid rgba(255,255,255,.08);
+
 }
 
-.ambient.two{
-width:600px;
-height:600px;
-bottom:-200px;
-right:-150px;
-background:rgba(34,197,94,.05);
+.nav-link{
+
+position:relative;
+
+transition:.3s;
+
 }
 
-/* =========================
-GLASSMORPHISM
-========================= */
+.nav-link:hover{
+
+color:white;
+
+}
+
+.nav-link::after{
+
+content:'';
+
+position:absolute;
+
+left:0;
+bottom:-6px;
+
+width:0%;
+height:1px;
+
+background:#22c55e;
+
+transition:.3s;
+
+}
+
+.nav-link:hover::after{
+
+width:100%;
+
+}
+
+/* ===== BUTTON ===== */
+
+.btn-primary{
+
+background:#22c55e;
+
+color:black;
+
+padding:16px 28px;
+
+border-radius:18px;
+
+font-weight:700;
+
+transition:.35s;
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 35px rgba(34,197,94,.35);
+
+}
+
+/* ===== GLASS ===== */
 
 .glass{
 
 background:rgba(255,255,255,.04);
 
-backdrop-filter:blur(22px);
+backdrop-filter:blur(20px);
 
 border:1px solid rgba(255,255,255,.08);
 
 box-shadow:
-0 10px 40px rgba(0,0,0,.35);
+0 10px 40px rgba(0,0,0,.4);
 
 }
 
-/* =========================
-TEXT EFFECTS
-========================= */
+/* ===== TITLES ===== */
 
 .gradient{
 
 background:linear-gradient(
 90deg,
-#ffffff 0%,
-#4ade80 100%
+#ffffff,
+#4ade80
 );
 
 -webkit-background-clip:text;
@@ -112,523 +170,126 @@ background:linear-gradient(
 
 }
 
-.subtitle{
-color:var(--muted);
-line-height:1.7;
-font-size:1.15rem;
-}
+/* ===== REVEAL ===== */
 
-/* =========================
-NAVBAR
-========================= */
+.reveal{
 
-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:100;
-padding:20px 0;
-}
+opacity:0;
+transform:translateY(60px);
+transition:1s cubic-bezier(.16,1,.3,1);
 
-.nav-wrapper{
-max-width:1280px;
-margin:auto;
-padding:0 24px;
-}
-
-nav{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:18px 28px;
-
-border-radius:24px;
-position:relative;
+will-change:transform,opacity;
 
 }
 
-.logo{
-font-weight:800;
-letter-spacing:.2em;
-font-size:.9rem;
-text-decoration:none;
-color:white;
+.reveal.active{
+
+opacity:1;
+transform:translateY(0);
+
 }
 
-.nav-links{
-display:flex;
-gap:36px;
-font-size:.9rem;
-}
+/* ===== HERO ===== */
 
-.nav-links a{
-color:#a1a1aa;
-text-decoration:none;
-transition:.3s;
-}
+.hero-glow{
 
-.nav-links a:hover{
-color:white;
-}
-
-.nav-links a.active{
-color:#4ade80;
-}
-
-/* =========================
-MOBILE MENU
-========================= */
-
-.menu-toggle{
-display:none;
-background:none;
-border:none;
-cursor:pointer;
-flex-direction:column;
-gap:5px;
-}
-
-.menu-toggle span{
-width:26px;
-height:2px;
-background:white;
-border-radius:10px;
-transition:.3s;
-}
-
-.mobile-menu{
-position:fixed;
-top:0;
-right:-100%;
-width:100%;
-height:100vh;
-background:rgba(5,5,5,.96);
-backdrop-filter:blur(20px);
-z-index:999;
-padding:120px 40px;
-transition:.5s var(--transition);
-display:flex;
-flex-direction:column;
-gap:28px;
-}
-
-.mobile-menu.active{
-right:0;
-}
-
-.mobile-menu a{
-font-size:2rem;
-font-weight:700;
-text-decoration:none;
-color:white;
-transition:.3s;
-}
-
-.mobile-menu a:hover{
-color:#4ade80;
-}
-
-.close-menu{
 position:absolute;
-top:30px;
-right:30px;
-font-size:2.5rem;
-cursor:pointer;
-color:white;
-}
 
-/* =========================
-HERO
-========================= */
+width:600px;
+height:600px;
 
-.hero{
-
-min-height:100vh;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-text-align:center;
-
-padding:160px 24px 100px;
-
-position:relative;
-z-index:1;
-
-}
-
-.hero-content{
-max-width:1100px;
-}
-
-.hero-tag{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:12px 20px;
 border-radius:999px;
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-font-size:.72rem;
-letter-spacing:.3em;
-text-transform:uppercase;
-color:#4ade80;
-margin-bottom:40px;
-font-weight:700;
-}
 
-.hero h1{
+background:rgba(34,197,94,.08);
 
-font-size:clamp(3.5rem,8vw,8rem);
+filter:blur(120px);
 
-font-weight:900;
-
-line-height:.95;
-
-letter-spacing:-.05em;
+z-index:0;
 
 }
 
-.hero p{
-margin-top:40px;
-max-width:850px;
-margin-inline:auto;
-}
+/* ===== CARDS ===== */
 
-/* =========================
-SECTIONS
-========================= */
+.feature-card{
 
-.section{
-max-width:1280px;
-margin:auto;
-padding:120px 24px;
-position:relative;
-z-index:1;
-}
-
-.section-title{
-font-size:clamp(2.5rem,5vw,4.5rem);
-font-weight:800;
-line-height:1;
-letter-spacing:-.04em;
-margin-bottom:24px;
-}
-
-.section-label{
-font-size:.8rem;
-font-weight:700;
-letter-spacing:.3em;
-text-transform:uppercase;
-color:#4ade80;
-margin-bottom:20px;
-}
-
-/* =========================
-CARDS
-========================= */
-
-.card{
-
-transition:all .5s var(--transition);
-
-border:1px solid rgba(255,255,255,.08);
-
-background:rgba(255,255,255,.03);
-
-backdrop-filter:blur(18px);
+transition:.4s cubic-bezier(.16,1,.3,1);
 
 }
 
-.card:hover{
+.feature-card:hover{
 
 transform:translateY(-8px);
 
-border-color:#22c55e55;
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.45);
+border-color:rgba(34,197,94,.3);
 
 }
 
-/* =========================
-FORM
-========================= */
+/* ===== MOBILE MENU ===== */
 
-.form-box{
-padding:50px;
-border-radius:40px;
-}
+.mobile-menu{
 
-.form-title{
-font-size:2.4rem;
-font-weight:800;
-margin-bottom:40px;
-}
+position:fixed;
 
-.input-group{
-margin-bottom:20px;
-}
-
-input,
-textarea{
+top:0;
+right:-100%;
 
 width:100%;
+height:100vh;
 
-padding:18px 22px;
+background:#050505;
 
-background:rgba(255,255,255,.04);
+z-index:100;
 
-border:1px solid rgba(255,255,255,.08);
+transition:.5s;
 
-border-radius:18px;
+padding:120px 40px;
+
+}
+
+.mobile-menu.active{
+
+right:0;
+
+}
+
+.mobile-link{
+
+font-size:2rem;
+
+font-weight:700;
+
+display:block;
+
+margin-bottom:24px;
 
 color:white;
 
-outline:none;
-
-font-size:1rem;
-
-transition:.3s;
-
-}
-
-input:focus,
-textarea:focus{
-
-border-color:#22c55e;
-
-background:rgba(255,255,255,.06);
-
-}
-
-textarea{
-resize:none;
-}
-
-.btn{
-
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-
-background:#22c55e;
-
-color:black;
-
-font-weight:800;
-
-padding:18px 34px;
-
-border-radius:20px;
-
-transition:.4s var(--transition);
-
 text-decoration:none;
 
-border:none;
-
-cursor:pointer;
-
 }
 
-.btn:hover{
-
-transform:translateY(-4px);
-
-box-shadow:0 15px 40px rgba(34,197,94,.35);
-
-}
-
-/* =========================
-INFO CARDS
-========================= */
-
-.info-card{
-padding:36px;
-border-radius:30px;
-}
-
-.info-card h3{
-font-size:1.3rem;
-margin-bottom:18px;
-font-weight:700;
-}
-
-.info-card p{
-color:var(--muted);
-line-height:1.8;
-}
-
-/* =========================
-PRODUCT
-========================= */
-
-.product-box{
-padding:70px;
-border-radius:50px;
-overflow:hidden;
-position:relative;
-}
-
-.product-box::before{
-content:'';
-position:absolute;
-inset:0;
-background:
-radial-gradient(circle at top right, rgba(34,197,94,.08), transparent 35%);
-pointer-events:none;
-}
-
-.product-list li{
-margin-bottom:20px;
-font-size:1.1rem;
-color:#d4d4d8;
-}
-
-/* =========================
-COLAB
-========================= */
-
-.collab-card{
-padding:50px 40px;
-border-radius:30px;
-text-align:center;
-}
-
-/* =========================
-CTA
-========================= */
-
-.cta{
-padding:180px 24px;
-text-align:center;
-}
-
-.cta h2{
-font-size:clamp(3rem,6vw,6rem);
-font-weight:900;
-line-height:1;
-letter-spacing:-.05em;
-max-width:1100px;
-margin:auto;
-}
-
-.cta p{
-margin-top:30px;
-color:var(--muted);
-font-size:1.25rem;
-}
-
-/* =========================
-FOOTER
-========================= */
-
-footer{
-border-top:1px solid rgba(255,255,255,.08);
-padding:70px 24px;
-position:relative;
-z-index:1;
-}
-
-.footer-grid{
-max-width:1280px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
-}
-
-.footer-title{
-font-weight:800;
-margin-bottom:20px;
-}
-
-.footer-text{
-color:#71717a;
-line-height:1.8;
-}
-
-/* =========================
-ANIMATIONS
-========================= */
-
-.fade{
-
-opacity:0;
-
-transform:translateY(60px);
-
-filter:blur(8px);
-
-transition:
-1s var(--transition);
-
-}
-
-.fade.show{
-
-opacity:1;
-
-transform:translateY(0);
-
-filter:blur(0px);
-
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:1024px){
-
-.footer-grid{
-grid-template-columns:1fr;
-}
-
-}
+/* ===== RESPONSIVE ===== */
 
 @media(max-width:768px){
 
-.hero{
-padding-top:180px;
+.hero-title{
+
+font-size:3.4rem !important;
+
+line-height:1.05;
+
 }
 
-.hero h1{
-font-size:3.8rem;
+.section-title{
+
+font-size:2.5rem !important;
+
 }
 
-.nav-links{
-display:none;
-}
+.hero-sub{
 
-.menu-toggle{
-display:flex;
-}
+font-size:1.05rem !important;
 
-.form-box{
-padding:35px;
-}
-
-.product-box{
-padding:40px;
-}
-
-.section{
-padding:80px 24px;
-}
-
-.cta{
-padding:120px 24px;
-}
-
-.mobile-menu a{
-font-size:2.2rem;
 }
 
 }
@@ -637,66 +298,88 @@ font-size:2.2rem;
 
 </head>
 
-<body>
-
-<div class="ambient one"></div>
-<div class="ambient two"></div>
+<body class="grid-bg">
 
 <!-- MOBILE MENU -->
 
-<div class="mobile-menu" id="mobileMenu">
+<div id="mobileMenu" class="mobile-menu">
 
-<div class="close-menu" id="closeMenu">
+<button id="closeMenu"
+class="absolute top-8 right-8 text-4xl text-white">
+
 ×
-</div>
 
-<a href="index.html">Inicio</a>
-<a href="historia.html">Historia</a>
-<a href="tecnologia.html">Tecnología</a>
-<a href="equipo.html">Equipo</a>
-<a href="contacto.html" style="color:#4ade80;">Contacto</a>
+</button>
+
+<a href="index.html" class="mobile-link">Inicio</a>
+<a href="historia.html" class="mobile-link">Historia</a>
+<a href="tecnologia.html" class="mobile-link">Tecnología</a>
+<a href="equipo.html" class="mobile-link">Equipo</a>
+<a href="contacto.html" class="mobile-link">Contacto</a>
 
 </div>
 
 <!-- NAVBAR -->
 
-<header>
+<header class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-5">
 
-<div class="nav-wrapper">
+<div class="max-w-7xl mx-auto">
 
-<nav class="glass">
+<nav class="navbar rounded-2xl px-6 py-4 flex items-center justify-between">
 
-<a href="index.html" class="logo">
+<a href="index.html"
+class="flex items-center gap-3">
+
+<img src="LOGO.png"
+class="h-9 w-auto">
+
+<span class="font-bold tracking-[0.3em] text-sm">
+
 OVOCEM
+
+</span>
+
 </a>
 
-<div class="nav-links">
+<div class="hidden md:flex items-center gap-10 text-sm text-zinc-400">
 
-<a href="historia.html">
+<a href="index.html" class="nav-link text-white">Inicio</a>
+
+<a href="historia.html" class="nav-link">
 Historia
 </a>
 
-<a href="tecnologia.html">
+<a href="tecnologia.html" class="nav-link">
 Tecnología
 </a>
 
-<a href="equipo.html">
+<a href="equipo.html" class="nav-link">
 Equipo
 </a>
 
-<a href="contacto.html" class="active">
+<a href="contacto.html" class="nav-link">
 Contacto
 </a>
 
 </div>
 
-<button class="menu-toggle" id="menuToggle">
+<div class="flex items-center gap-4">
 
-<span></span>
-<span></span>
-<span></span>
+<a href="contacto.html"
+class="hidden md:flex btn-primary text-sm">
+
+Contactar
+
+</a>
+
+<button id="openMenu"
+class="md:hidden text-white text-2xl">
+
+☰
 
 </button>
+
+</div>
 
 </nav>
 
@@ -706,199 +389,119 @@ Contacto
 
 <!-- HERO -->
 
-<section class="hero">
+<section
+class="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
 
-<div class="hero-content fade">
+<div class="hero-glow top-[-200px] left-[-150px]"></div>
 
-<div class="hero-tag">
-Relaciones Estratégicas
-</div>
+<div class="hero-glow bottom-[-250px] right-[-150px]"></div>
 
-<h1>
+<div class="max-w-6xl mx-auto relative z-10">
 
-Hablemos sobre un
+<p
+class="uppercase tracking-[8px] text-green-400 mb-8 reveal text-sm md:text-base">
+
+BIOTECNOLOGÍA APLICADA
+
+</p>
+
+<h1
+class="hero-title text-6xl md:text-8xl lg:text-[9rem] font-black leading-[0.95] tracking-[-0.05em] reveal">
+
+Construyendo un
 
 <span class="gradient">
+
 futuro sostenible
+
 </span>
 
 </h1>
 
-<p class="subtitle">
+<p
+class="hero-sub text-zinc-400 text-lg md:text-2xl mt-10 max-w-3xl mx-auto leading-relaxed reveal">
 
-Estamos construyendo una nueva visión para los materiales de construcción.
-Nos encantaría escuchar tus ideas, propuestas o posibles colaboraciones
-para impulsar la innovación sustentable en México.
+OVOCEM transforma residuos orgánicos en materiales de construcción innovadores mediante procesos de ingeniería sostenible y economía circular.
 
 </p>
+
+<div
+class="flex flex-col sm:flex-row gap-5 justify-center mt-14 reveal">
+
+<a href="tecnologia.html"
+class="btn-primary">
+
+Explorar Tecnología
+
+</a>
+
+<a href="contacto.html"
+class="border border-white/10 hover:border-green-400 transition px-8 py-4 rounded-2xl text-white font-semibold">
+
+Contacto
+
+</a>
+
+</div>
 
 </div>
 
 </section>
 
-<!-- CONTACTO -->
+<!-- ABOUT -->
 
-<section class="section">
+<section class="max-w-7xl mx-auto px-6 py-28">
 
-<div class="grid lg:grid-cols-2 gap-10 items-start">
+<div
+class="grid lg:grid-cols-2 gap-16 items-center">
 
-<!-- FORM -->
+<div class="reveal">
 
-<div class="glass form-box fade">
+<p class="uppercase tracking-[6px] text-green-400 mb-6">
 
-<p class="section-label">
-Contacto Directo
+INNOVACIÓN SUSTENTABLE
+
 </p>
 
-<h2 class="form-title">
-Envíanos un mensaje
+<h2
+class="section-title text-5xl md:text-6xl font-black leading-tight">
+
+La nueva generación de materiales ecológicos.
+
 </h2>
 
-<form>
+<p
+class="text-zinc-400 text-lg leading-relaxed mt-8">
 
-<div class="input-group">
+OVOCEM nace como una propuesta biotecnológica orientada a reducir el impacto ambiental de la industria de la construcción mediante la reutilización inteligente de residuos orgánicos.
 
-<input
-type="text"
-placeholder="Nombre completo">
+</p>
 
-</div>
+<p
+class="text-zinc-400 text-lg leading-relaxed mt-6">
 
-<div class="input-group">
-
-<input
-type="email"
-placeholder="Correo electrónico">
-
-</div>
-
-<div class="input-group">
-
-<input
-type="text"
-placeholder="Asunto">
-
-</div>
-
-<div class="input-group">
-
-<textarea
-rows="6"
-placeholder="Escribe tu mensaje"></textarea>
-
-</div>
-
-<button
-type="submit"
-class="btn">
-
-Enviar Mensaje
-
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-<path d="M5 12H19M19 12L13 6M19 12L13 18"
-stroke="currentColor"
-stroke-width="2"
-stroke-linecap="round"
-stroke-linejoin="round"/>
-</svg>
-
-</button>
-
-</form>
-
-</div>
-
-<!-- DATOS -->
-
-<div class="space-y-6">
-
-<div class="glass card info-card fade">
-
-<h3>
-📍 Dirección
-</h3>
-
-<p>
-
-Instituto Tecnológico de Pochutla
-<br>
-S/N Colonia El Colorado
-<br>
-San Pedro Pochutla, Oaxaca
+Nuestro objetivo es desarrollar materiales más responsables con el medio ambiente sin comprometer calidad, resistencia y desempeño estructural.
 
 </p>
 
 </div>
 
-<div class="glass card info-card fade">
+<div
+class="glass rounded-[40px] p-10 md:p-14 reveal">
 
-<h3>
-📞 Teléfono
-</h3>
-
-<p>
-958-104-30-78
-</p>
-
-</div>
-
-<div class="glass card info-card fade">
-
-<h3>
-✉️ Correo Electrónico
-</h3>
-
-<p>
-OVOCEM@gmail.com
-</p>
-
-</div>
-
-<div class="glass card info-card fade">
-
-<h3>
-🌐 Sitio Web
-</h3>
-
-<p>
-www.ecomateriales.com
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- PRODUCTO -->
-
-<section class="section">
-
-<div class="glass product-box fade">
-
-<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="grid grid-cols-2 gap-8">
 
 <div>
 
-<p class="section-label">
-Producto Destacado
-</p>
+<h3 class="text-6xl font-black text-green-400">
 
-<h2 class="section-title">
-OVOCEM 25 KG
-</h2>
+90%
 
-<p class="subtitle">
+</h3>
 
-Nuestro producto representa una propuesta innovadora para el
-aprovechamiento de residuos orgánicos dentro del sector de la construcción.
+<p class="text-zinc-400 mt-3">
 
-<br><br>
-
-Su formulación combina cemento convencional con cáscara de huevo
-procesada, promoviendo un enfoque más sostenible y eficiente.
+Base de cemento tradicional.
 
 </p>
 
@@ -906,29 +509,51 @@ procesada, promoviendo un enfoque más sostenible y eficiente.
 
 <div>
 
-<ul class="product-list">
+<h3 class="text-6xl font-black text-green-400">
 
-<li>
-✓ Mejor desempeño estructural
-</li>
+10%
 
-<li>
-✓ Resistencias garantizadas
-</li>
+</h3>
 
-<li>
-✓ Aprovechamiento de residuos orgánicos
-</li>
+<p class="text-zinc-400 mt-3">
 
-<li>
-✓ Compatible con procesos tradicionales
-</li>
+Cáscara de huevo procesada.
 
-<li>
-✓ Innovación sustentable aplicada
-</li>
+</p>
 
-</ul>
+</div>
+
+<div>
+
+<h3 class="text-6xl font-black text-green-400">
+
+100%
+
+</h3>
+
+<p class="text-zinc-400 mt-3">
+
+Innovación sostenible.
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-6xl font-black text-green-400">
+
+0%
+
+</h3>
+
+<p class="text-zinc-400 mt-3">
+
+Desperdicio orgánico desaprovechado.
+
+</p>
+
+</div>
 
 </div>
 
@@ -938,60 +563,115 @@ procesada, promoviendo un enfoque más sostenible y eficiente.
 
 </section>
 
-<!-- COLAB -->
+<!-- FEATURES -->
 
-<section class="section">
+<section class="max-w-7xl mx-auto px-6 py-28">
 
-<p class="section-label text-center">
-Colaboraciones
+<div class="text-center mb-20 reveal">
+
+<p class="uppercase tracking-[6px] text-green-400 mb-5">
+
+VENTAJAS
+
 </p>
 
-<h2 class="section-title text-center">
-¿Quieres colaborar con OVOCEM?
+<h2 class="section-title text-5xl md:text-6xl font-black">
+
+¿Por qué OVOCEM?
+
 </h2>
 
-<div class="grid md:grid-cols-3 gap-8 mt-20">
+</div>
 
-<div class="glass card collab-card fade">
+<div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
-<h3 class="text-2xl font-bold mb-5">
-Empresas
+<div
+class="glass feature-card rounded-[32px] p-10 reveal">
+
+<div class="text-5xl mb-8">
+
+♻️
+
+</div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Economía Circular
+
 </h3>
 
 <p class="text-zinc-400 leading-relaxed">
 
-Alianzas estratégicas para impulsar el desarrollo
-de materiales sustentables de nueva generación.
+Transformamos residuos orgánicos en soluciones útiles para la construcción moderna.
 
 </p>
 
 </div>
 
-<div class="glass card collab-card fade">
+<div
+class="glass feature-card rounded-[32px] p-10 reveal">
 
-<h3 class="text-2xl font-bold mb-5">
-Instituciones
+<div class="text-5xl mb-8">
+
+🌱
+
+</div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Sostenibilidad
+
 </h3>
 
 <p class="text-zinc-400 leading-relaxed">
 
-Investigación, proyectos académicos y colaboración
-científica enfocada en innovación ambiental.
+Reducción del impacto ambiental y aprovechamiento inteligente de recursos.
 
 </p>
 
 </div>
 
-<div class="glass card collab-card fade">
+<div
+class="glass feature-card rounded-[32px] p-10 reveal">
 
-<h3 class="text-2xl font-bold mb-5">
-Inversionistas
+<div class="text-5xl mb-8">
+
+🏗️
+
+</div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Compatibilidad
+
 </h3>
 
 <p class="text-zinc-400 leading-relaxed">
 
-Impulsar el crecimiento y futura comercialización
-de OVOCEM a gran escala.
+Compatible con métodos tradicionales de construcción y mezclado.
+
+</p>
+
+</div>
+
+<div
+class="glass feature-card rounded-[32px] p-10 reveal">
+
+<div class="text-5xl mb-8">
+
+🧪
+
+</div>
+
+<h3 class="text-2xl font-bold mb-4">
+
+Innovación
+
+</h3>
+
+<p class="text-zinc-400 leading-relaxed">
+
+Desarrollo basado en investigación, biotecnología y materiales inteligentes.
 
 </p>
 
@@ -1003,47 +683,67 @@ de OVOCEM a gran escala.
 
 <!-- CTA -->
 
-<section class="cta fade">
+<section class="px-6 py-36">
 
-<h2>
+<div
+class="max-w-6xl mx-auto glass rounded-[50px] p-12 md:p-24 text-center reveal">
 
-Construyamos juntos el futuro
-de la construcción sostenible.
+<p class="uppercase tracking-[6px] text-green-400 mb-6">
 
-</h2>
-
-<p>
-
-OVOCEM • Innovación en cada mezcla.
+OVOCEM
 
 </p>
 
-<a
-href="mailto:OVOCEM@gmail.com"
-class="btn mt-12 inline-flex">
+<h2
+class="text-5xl md:text-7xl font-black leading-tight max-w-4xl mx-auto">
+
+Construyamos juntos el futuro de la construcción sostenible.
+
+</h2>
+
+<p
+class="text-zinc-400 text-xl max-w-3xl mx-auto mt-8 leading-relaxed">
+
+Descubre cómo OVOCEM busca revolucionar la industria mediante materiales más responsables, eficientes y sostenibles.
+
+</p>
+
+<a href="contacto.html"
+class="btn-primary mt-12 inline-flex">
 
 Contactar Ahora
 
 </a>
 
+</div>
+
 </section>
 
 <!-- FOOTER -->
 
-<footer>
+<footer class="border-t border-white/10 py-16">
 
-<div class="footer-grid">
+<div
+class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
 
 <div>
 
-<h3 class="footer-title">
-ECO MATERIALES OVOCEM S.A.S
-</h3>
+<div class="flex items-center gap-3">
 
-<p class="footer-text">
+<img src="LOGO.png"
+class="h-9">
 
-Construyendo un futuro más sostenible mediante innovación,
-biotecnología y materiales ecológicos.
+<span class="font-bold tracking-[0.3em] text-sm">
+
+OVOCEM
+
+</span>
+
+</div>
+
+<p class="text-zinc-500 mt-6 leading-relaxed">
+
+Empresa enfocada en innovación sostenible para materiales de construcción mediante biotecnología aplicada.
 
 </p>
 
@@ -1051,14 +751,37 @@ biotecnología y materiales ecológicos.
 
 <div>
 
-<h3 class="footer-title">
-Centro de Desarrollo
+<h3 class="font-semibold mb-5">
+
+Navegación
+
 </h3>
 
-<p class="footer-text">
+<div class="space-y-3 text-zinc-500">
+
+<p><a href="historia.html">Historia</a></p>
+<p><a href="tecnologia.html">Tecnología</a></p>
+<p><a href="equipo.html">Equipo</a></p>
+<p><a href="contacto.html">Contacto</a></p>
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="font-semibold mb-5">
+
+Ubicación
+
+</h3>
+
+<p class="text-zinc-500 leading-relaxed">
 
 Instituto Tecnológico de Pochutla
-<br>
+
+<br><br>
+
 San Pedro Pochutla, Oaxaca
 
 </p>
@@ -1067,14 +790,20 @@ San Pedro Pochutla, Oaxaca
 
 <div>
 
-<h3 class="footer-title">
-Relaciones Estratégicas
+<h3 class="font-semibold mb-5">
+
+Contacto
+
 </h3>
 
-<p class="footer-text">
+<p class="text-zinc-500">
 
 958-104-30-78
-<br>
+
+</p>
+
+<p class="text-zinc-500 mt-3">
+
 OVOCEM@gmail.com
 
 </p>
@@ -1083,47 +812,62 @@ OVOCEM@gmail.com
 
 </div>
 
+<div
+class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-zinc-600 text-sm">
+
+<p>
+
+© 2026 OVOCEM. Todos los derechos reservados.
+
+</p>
+
+<p>
+
+Biotechnology • Sustainability • Innovation
+
+</p>
+
+</div>
+
 </footer>
 
 <script>
 
-/* ANIMACIONES */
+/* ===== REVEAL ===== */
 
-const observer = new IntersectionObserver(entries=>{
+const reveals = document.querySelectorAll('.reveal');
 
-entries.forEach(entry=>{
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
 
 if(entry.isIntersecting){
 
-entry.target.classList.add('show');
+entry.target.classList.add('active');
 
 }
 
 });
 
 },{
-threshold:.08
+threshold:.1
 });
 
-document.querySelectorAll('.fade').forEach(el=>{
+reveals.forEach(el => observer.observe(el));
 
-observer.observe(el);
+/* ===== MOBILE MENU ===== */
 
-});
-
-/* MOBILE MENU */
-
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+const openMenu = document.getElementById('openMenu');
 const closeMenu = document.getElementById('closeMenu');
+const mobileMenu = document.getElementById('mobileMenu');
 
-menuToggle.addEventListener('click', ()=>{
+openMenu.addEventListener('click',()=>{
 
 mobileMenu.classList.add('active');
 
 });
 
-closeMenu.addEventListener('click', ()=>{
+closeMenu.addEventListener('click',()=>{
 
 mobileMenu.classList.remove('active');
 

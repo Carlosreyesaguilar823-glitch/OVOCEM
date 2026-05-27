@@ -1,1073 +1,1312 @@
 <!DOCTYPE html>
-<html lang="es" class="bg-black text-white antialiased selection:bg-emerald-500/30">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OVOCEM | Arquitectura Molecular y Biotecnología Aplicada</title>
 
-    <meta name="description"
-        content="Descubre la ciencia, el proceso de molienda micronizada y los valores fundamentales detrás de OVOCEM. Materiales circulares de alta ingeniería.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<title>OVOCEM | Tecnología</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description"
+content="Conoce la tecnología detrás de OVOCEM y cómo transformamos residuos orgánicos en innovación sustentable para la construcción." />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
-        :root {
-            --apple-bg: #000000;
-            --apple-card: #09090B;
-            --ov-gold: #F5C400;
-            --ov-green: #10B981;
-            --spring-timing: cubic-bezier(0.16, 1, 0.3, 1);
-        }
+<style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+:root{
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--apple-bg);
-            overflow-x: hidden;
-        }
+--green:#22c55e;
+--green-soft:#4ade80;
 
-        .tech-grid-bg {
-            background-size: 40px 40px;
+--bg:#080808;
 
-            background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-        }
+--surface:rgba(255,255,255,.04);
 
-        .bg-glow-radial {
+--border:rgba(255,255,255,.08);
 
-            background: radial-gradient(circle at 50% 50%,
-                    rgba(16, 185, 129, 0.05) 0%,
-                    rgba(245, 196, 0, 0.01) 50%,
-                    transparent 100%);
-        }
+--text:#ffffff;
 
-        .bento-card-premium {
+--muted:#a1a1aa;
 
-            background: linear-gradient(180deg,
-                    rgba(14, 14, 17, 0.8) 0%,
-                    rgba(9, 9, 11, 0.95) 100%);
+--radius:30px;
 
-            border: 1px solid rgba(255, 255, 255, 0.03);
+}
 
-            border-radius: 38px;
+*{
 
-            transition: all 0.8s var(--spring-timing);
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 
-            position: relative;
+}
 
-            overflow: hidden;
+html{
 
-            backdrop-filter: blur(20px);
-        }
+scroll-behavior:smooth;
 
-        .bento-card-premium:hover {
+}
 
-            border-color: rgba(255, 255, 255, 0.12);
+body{
 
-            transform: translateY(-8px);
+background:
+radial-gradient(circle at top left,#22c55e18,transparent 25%),
+radial-gradient(circle at bottom right,#22c55e10,transparent 25%),
+var(--bg);
 
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.8),
-                0 0 40px rgba(255, 255, 255, 0.01);
-        }
+color:var(--text);
 
-        .text-mask-white {
+overflow-x:hidden;
 
-            background: linear-gradient(180deg,
-                    #FFFFFF 20%,
-                    #A1A1AA 100%);
+}
 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* ===== Ambient ===== */
 
-        .text-mask-green {
+.ambient{
 
-            background: linear-gradient(135deg,
-                    #A7F3D0 0%,
-                    #10B981 50%,
-                    #047857 100%);
+position:fixed;
+border-radius:50%;
+filter:blur(140px);
+pointer-events:none;
+z-index:0;
+opacity:.5;
 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+}
 
-        .reveal-dynamic {
+.ambient.one{
 
-            opacity: 0;
+width:450px;
+height:450px;
 
-            transform: translateY(50px) scale(0.97);
+background:#22c55e12;
 
-            filter: blur(10px);
+top:-120px;
+left:-100px;
 
-            transition:
-                opacity 1.2s var(--spring-timing),
-                transform 1.2s var(--spring-timing),
-                filter 1.2s var(--spring-timing);
+}
 
-            will-change: transform, opacity, filter;
-        }
+.ambient.two{
 
-        .reveal-dynamic.active {
+width:500px;
+height:500px;
 
-            opacity: 1;
+background:#22c55e10;
 
-            transform: translateY(0) scale(1);
+bottom:-180px;
+right:-120px;
 
-            filter: blur(0px);
-        }
+}
 
-        .hero-fade-in {
+/* ===== Navbar ===== */
 
-            opacity: 0;
+header{
 
-            transform: translateY(30px);
+position:fixed;
+top:0;
+left:0;
 
-            filter: blur(8px);
+width:100%;
 
-            animation: heroRelease 1.4s var(--spring-timing) forwards;
-        }
+z-index:100;
 
-        @keyframes heroRelease {
+padding:18px 20px;
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0px);
-            }
-        }
+}
 
-        .spec-content {
+nav{
 
-            max-height: 0;
+max-width:1200px;
 
-            opacity: 0;
+margin:auto;
 
-            overflow: hidden;
+background:rgba(15,15,15,.55);
 
-            transition:
-                max-height 0.5s var(--spring-timing),
-                opacity 0.5s var(--spring-timing),
-                margin-top 0.3s ease;
-        }
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
 
-        .spec-item.active .spec-content {
+border:1px solid rgba(255,255,255,.08);
 
-            max-height: 150px;
+border-radius:24px;
 
-            opacity: 1;
+padding:18px 26px;
 
-            margin-top: 12px;
-        }
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-        .nav-link {
-            position: relative;
-        }
+}
 
-        .nav-link::after {
+.logo{
 
-            content: "";
+font-size:15px;
+font-weight:800;
+letter-spacing:.5px;
 
-            position: absolute;
+text-decoration:none;
+color:white;
 
-            left: 0;
+}
 
-            bottom: -6px;
+.nav-links{
 
-            width: 0%;
+display:flex;
+gap:30px;
+list-style:none;
 
-            height: 2px;
+}
 
-            background: var(--ov-gold);
+.nav-links a{
 
-            transition: width 0.4s ease;
-        }
+text-decoration:none;
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+color:#a1a1aa;
 
-        .glass-btn {
+font-size:14px;
 
-            backdrop-filter: blur(18px);
+transition:.3s;
 
-            -webkit-backdrop-filter: blur(18px);
-        }
+}
 
-        /* MOBILE MENU */
+.nav-links a:hover,
+.nav-links a.active{
 
-        .mobile-menu-panel {
+color:#4ade80;
 
-            position: fixed;
+}
 
-            top: 0;
-            right: -100%;
+/* ===== Mobile ===== */
 
-            width: 100%;
-            height: 100vh;
+.menu-btn{
 
-            background: rgba(0, 0, 0, 0.98);
+display:none;
 
-            backdrop-filter: blur(30px);
+background:none;
+border:none;
 
-            z-index: 999;
+color:white;
 
-            transition: right .5s cubic-bezier(0.16, 1, 0.3, 1);
+font-size:28px;
 
-            display: flex;
+cursor:pointer;
 
-            flex-direction: column;
+}
 
-            padding: 120px 40px;
-        }
+.mobile-menu{
 
-        .mobile-menu-panel.active {
-            right: 0;
-        }
+display:none;
+flex-direction:column;
+gap:18px;
 
-        .mobile-link {
+padding-top:20px;
 
-            font-size: 2rem;
+}
 
-            font-weight: 700;
+.mobile-menu a{
 
-            color: white;
+color:#d4d4d8;
+text-decoration:none;
 
-            margin-bottom: 28px;
+font-size:15px;
 
-            text-decoration: none;
+}
 
-            transition: .3s;
-        }
+/* ===== Hero ===== */
 
-        .mobile-link:hover {
-            color: #10B981;
-            transform: translateX(10px);
-        }
+.hero{
 
-        .menu-btn {
-            width: 40px;
-            height: 40px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
-        }
+min-height:100vh;
 
-        .menu-btn span {
+display:flex;
+align-items:center;
+justify-content:center;
 
-            width: 100%;
-            height: 2px;
+padding:160px 24px 80px;
 
-            background: white;
+text-align:center;
 
-            border-radius: 10px;
+position:relative;
+z-index:1;
 
-            transition: .4s;
-        }
+}
 
-        .menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translateY(11px);
-        }
+.hero-content{
 
-        .menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
+max-width:1000px;
 
-        .menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-11px);
-        }
+}
 
-        @media (max-width: 768px) {
+.hero-label{
 
-            .desktop-nav,
-            .desktop-btn {
-                display: none;
-            }
+font-size:12px;
 
-            .mobile-button {
-                display: flex;
-            }
-        }
+font-weight:700;
 
-        @media (min-width: 769px) {
+letter-spacing:8px;
 
-            .mobile-button {
-                display: none;
-            }
-        }
+text-transform:uppercase;
 
-    </style>
+color:#4ade80;
+
+margin-bottom:28px;
+
+}
+
+.hero h1{
+
+font-size:clamp(50px,9vw,115px);
+
+line-height:.95;
+
+font-weight:900;
+
+letter-spacing:-5px;
+
+margin-bottom:34px;
+
+}
+
+.gradient{
+
+background:linear-gradient(
+90deg,
+#ffffff,
+#4ade80
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero p{
+
+max-width:760px;
+
+margin:auto;
+
+font-size:clamp(17px,2vw,22px);
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+/* ===== Sections ===== */
+
+.section{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:120px 24px;
+
+position:relative;
+z-index:1;
+
+}
+
+.section-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+
+}
+
+.section-label{
+
+font-size:12px;
+
+font-weight:700;
+
+letter-spacing:6px;
+
+text-transform:uppercase;
+
+color:#4ade80;
+
+margin-bottom:18px;
+
+}
+
+.section-title{
+
+font-size:clamp(34px,5vw,58px);
+
+line-height:1.08;
+
+font-weight:800;
+
+letter-spacing:-2px;
+
+margin-bottom:30px;
+
+}
+
+.section-text{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:var(--muted);
+
+}
+
+/* ===== Glass ===== */
+
+.glass{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border-radius:var(--radius);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.35);
+
+}
+
+/* ===== Process Cards ===== */
+
+.process-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:24px;
+
+margin-top:70px;
+
+}
+
+.process-card{
+
+padding:36px 28px;
+
+transition:.4s;
+
+}
+
+.process-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#22c55e55;
+
+}
+
+.process-number{
+
+font-size:13px;
+
+font-weight:800;
+
+color:#4ade80;
+
+margin-bottom:18px;
+
+}
+
+.process-card h3{
+
+font-size:24px;
+
+margin-bottom:16px;
+
+}
+
+.process-card p{
+
+color:var(--muted);
+
+line-height:1.8;
+
+}
+
+/* ===== Innovation ===== */
+
+.innovation{
+
+padding:90px;
+
+text-align:center;
+
+}
+
+.innovation h2{
+
+font-size:clamp(38px,5vw,72px);
+
+line-height:1.08;
+
+font-weight:900;
+
+letter-spacing:-3px;
+
+margin-bottom:28px;
+
+}
+
+.innovation p{
+
+max-width:900px;
+
+margin:auto;
+
+font-size:20px;
+
+line-height:1.9;
+
+color:var(--muted);
+
+}
+
+/* ===== Features ===== */
+
+.features-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+
+gap:26px;
+
+margin-top:60px;
+
+}
+
+.feature-card{
+
+padding:42px 32px;
+
+transition:.4s;
+
+}
+
+.feature-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#22c55e55;
+
+}
+
+.feature-icon{
+
+font-size:40px;
+
+margin-bottom:24px;
+
+}
+
+.feature-card h3{
+
+font-size:24px;
+
+margin-bottom:16px;
+
+}
+
+.feature-card p{
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+/* ===== Stats ===== */
+
+.stats-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:24px;
+
+margin-top:60px;
+
+}
+
+.stat-card{
+
+padding:40px 30px;
+
+text-align:center;
+
+}
+
+.stat-number{
+
+font-size:58px;
+
+font-weight:900;
+
+letter-spacing:-3px;
+
+margin-bottom:12px;
+
+}
+
+.stat-label{
+
+font-size:15px;
+
+color:var(--muted);
+
+}
+
+/* ===== CTA ===== */
+
+.cta{
+
+padding:140px 24px;
+
+text-align:center;
+
+}
+
+.cta h2{
+
+font-size:clamp(40px,6vw,82px);
+
+font-weight:900;
+
+line-height:1.05;
+
+letter-spacing:-3px;
+
+margin-bottom:24px;
+
+}
+
+.cta p{
+
+font-size:20px;
+
+color:var(--muted);
+
+margin-bottom:40px;
+
+}
+
+.btn{
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:18px 34px;
+
+background:#22c55e;
+
+color:black;
+
+font-weight:800;
+
+font-size:15px;
+
+border-radius:18px;
+
+text-decoration:none;
+
+transition:.35s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 15px 35px rgba(34,197,94,.35);
+
+}
+
+/* ===== Footer ===== */
+
+footer{
+
+border-top:1px solid rgba(255,255,255,.08);
+
+padding:50px 24px;
+
+}
+
+.footer-content{
+
+max-width:1200px;
+
+margin:auto;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:30px;
+
+flex-wrap:wrap;
+
+}
+
+.footer-content p{
+
+color:#71717a;
+
+font-size:14px;
+
+}
+
+/* ===== Animation ===== */
+
+.fade{
+
+opacity:0;
+
+transform:translateY(60px);
+
+transition:1s;
+
+}
+
+.fade.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:1100px){
+
+.section-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.process-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.features-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+header{
+
+padding:16px;
+
+}
+
+nav{
+
+padding:16px 20px;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.menu-btn{
+
+display:block;
+
+}
+
+.mobile-menu.show{
+
+display:flex;
+
+}
+
+.hero{
+
+padding:150px 24px 80px;
+
+}
+
+.hero h1{
+
+letter-spacing:-2px;
+
+}
+
+.section{
+
+padding:90px 24px;
+
+}
+
+.innovation{
+
+padding:50px 30px;
+
+}
+
+.process-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.footer-content{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.hero-label{
+
+letter-spacing:5px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+.section-text{
+
+font-size:16px;
+
+}
+
+.innovation p{
+
+font-size:17px;
+
+}
+
+.cta p{
+
+font-size:17px;
+
+}
+
+}
+
+</style>
+
 </head>
 
-<body class="tech-grid-bg">
+<body>
 
-    <!-- MOBILE MENU -->
+<div class="ambient one"></div>
+<div class="ambient two"></div>
 
-    <div id="mobileMenu" class="mobile-menu-panel">
+<!-- NAVBAR -->
 
-        <a href="index.html" class="mobile-link">Inicio</a>
+<header>
 
-        <a href="historia.html" class="mobile-link">Historia</a>
+<nav>
 
-        <a href="tecnologia.html" class="mobile-link text-[#F5C400]">Tecnología</a>
+<a href="index.html" class="logo">
+OVOCEM
+</a>
 
-        <a href="equipo.html" class="mobile-link">Equipo</a>
+<ul class="nav-links">
 
-        <a href="contacto.html" class="mobile-link">Contacto</a>
+<li><a href="index.html">Inicio</a></li>
 
-    </div>
+<li><a href="historia.html">Historia</a></li>
 
-    <!-- HEADER -->
+<li><a href="tecnologia.html" class="active">
+Tecnología
+</a></li>
 
-    <header
-        class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/40 border-b border-white/[0.03]">
+<li><a href="equipo.html">Equipo</a></li>
 
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex justify-between items-center">
+<li><a href="contacto.html">Contacto</a></li>
 
-            <!-- LOGO -->
+</ul>
 
-            <a href="index.html" class="flex items-center gap-4 group">
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
 
-                <img src="LOGO.png"
-                    alt="OVOCEM Logo"
-                    class="h-10 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
+</nav>
 
-                <span class="font-bold text-base tracking-[0.3em] text-zinc-100">
-                    OVOCEM
-                </span>
+<div class="mobile-menu glass" id="mobileMenu"
+style="margin:12px 20px 0;padding:24px;border-radius:24px;">
 
-            </a>
+<a href="index.html">Inicio</a>
+<a href="historia.html">Historia</a>
+<a href="tecnologia.html">Tecnología</a>
+<a href="equipo.html">Equipo</a>
+<a href="contacto.html">Contacto</a>
 
-            <!-- DESKTOP NAV -->
+</div>
 
-            <nav class="desktop-nav hidden md:flex items-center gap-12 text-sm font-medium tracking-wide">
+</header>
 
-                <a href="index.html"
-                    class="nav-link text-zinc-400 hover:text-white transition-colors duration-300">
-                    Inicio
-                </a>
+<!-- HERO -->
 
-                <a href="historia.html"
-                    class="nav-link text-zinc-400 hover:text-white transition-colors duration-300">
-                    Historia
-                </a>
+<section class="hero">
 
-                <a href="tecnologia.html"
-                    class="text-white font-semibold border-b-2 border-[#F5C400] pb-1">
-                    Tecnología
-                </a>
+<div class="hero-content fade">
 
-                <a href="equipo.html"
-                    class="nav-link text-zinc-400 hover:text-white transition-colors duration-300">
-                    Equipo
-                </a>
+<p class="hero-label">
+Tecnología Sustentable
+</p>
 
-                <a href="contacto.html"
-                    class="nav-link text-zinc-400 hover:text-white transition-colors duration-300">
-                    Contacto
-                </a>
+<h1>
 
-            </nav>
+Innovación que
+<span class="gradient">
+transforma residuos
+</span>
 
-            <!-- DESKTOP BUTTON -->
+en materiales inteligentes
 
-            <a href="contacto.html"
-                class="desktop-btn glass-btn px-6 py-2.5 bg-zinc-900/80 hover:bg-zinc-800 border border-white/10 rounded-full text-xs text-white tracking-wider uppercase font-semibold transition-all duration-300 hover:scale-105">
+</h1>
 
-                Fase Piloto
+<p>
 
-            </a>
+OVOCEM integra procesos innovadores para reutilizar cáscara de huevo procesada como complemento en mezclas de cemento, promoviendo una visión más sostenible para la construcción moderna.
 
-            <!-- MOBILE BUTTON -->
+</p>
 
-            <button id="menuToggle"
-                class="mobile-button menu-btn z-[1000]">
+</div>
 
-                <span></span>
-                <span></span>
-                <span></span>
+</section>
 
-            </button>
+<!-- TECNOLOGÍA -->
 
-        </div>
+<section class="section">
 
-    </header>
+<div class="section-grid">
 
-    <!-- HERO -->
+<div class="fade">
 
-    <main
-        class="relative min-h-screen flex flex-col justify-center items-center px-6 pt-32 text-center z-10 overflow-hidden">
+<p class="section-label">
+Proceso
+</p>
 
-        <div class="absolute inset-0 bg-glow-radial pointer-events-none"></div>
+<h2 class="section-title">
 
-        <div class="max-w-6xl mx-auto flex flex-col items-center relative z-10">
-
-            <div class="hero-fade-in inline-flex items-center gap-2 px-5 py-2 rounded-full bg-zinc-900/60 border border-zinc-800 text-xs font-bold tracking-[0.25em] text-[#10B981] uppercase mb-8"
-                style="animation-delay: 0.1s;">
-                Ingeniería de Materiales Avanzada
-            </div>
-
-            <h1 class="hero-fade-in text-[2.8rem] sm:text-[5.5rem] lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-mask-white"
-                style="animation-delay: 0.3s;">
-
-                La ciencia detrás de <br>
-
-                <span class="text-mask-green">
-                    la materia sostenible.
-                </span>
-
-            </h1>
-
-            <p class="hero-fade-in text-lg sm:text-xl lg:text-2xl text-zinc-400 mt-10 max-w-3xl font-light leading-relaxed px-4"
-                style="animation-delay: 0.5s;">
-
-                Transformamos residuos biológicos en soluciones de alta ingeniería civil.
-                Rediseñamos la estructura del cemento tradicional mediante optimización a nivel molecular.
-
-            </p>
-
-            <div class="hero-fade-in mt-12"
-                style="animation-delay: 0.7s;">
-
-                <a href="#proceso"
-                    class="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 group">
-
-                    Explorar el proceso industrial
-
-                    <span
-                        class="transform group-hover:translate-y-1 transition-transform duration-300">
-                        ↓
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </main>
-
-    <!-- TODO TU CONTENIDO SIGUE EXACTAMENTE IGUAL -->
-    <!-- DESDE AQUI NO CAMBIE NADA -->
-
-    <!-- FORMULA -->
-    <!-- TODO TU CODIGO ORIGINAL CONTINUA NORMAL -->
-
-    <!-- PEGA TODO LO DEMAS TAL CUAL -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-    <!-- SCRIPTS -->
-
-    <script>
-
-        /* MOBILE MENU */
-
-        const menuToggle = document.getElementById('menuToggle');
-
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', () => {
-
-            mobileMenu.classList.toggle('active');
-
-            menuToggle.classList.toggle('active');
-
-        });
-
-        /* SPEC */
-
-        function toggleSpec(element) {
-
-            if (element.classList.contains('active')) return;
-
-            document.querySelectorAll('.spec-item').forEach(item => {
-
-                item.classList.remove('active');
-
-                item.querySelector('.spec-icon').textContent = '+';
-
-                const title = item.querySelector('.flex span:nth-child(2)');
-
-                title.classList.remove('text-white', 'font-semibold');
-
-            });
-
-            element.classList.add('active');
-
-            element.querySelector('.spec-icon').textContent = '-';
-
-            element.querySelector('.flex span:nth-child(2)')
-                .classList.add('text-white', 'font-semibold');
-        }
-
-        /* SCROLL REVEAL */
-
-        const dynamicElements = document.querySelectorAll('.reveal-dynamic');
-
-        const activeScrollReveal = () => {
-
-            const triggerBottom = (window.innerHeight / 5) * 4.4;
-
-            dynamicElements.forEach(element => {
-
-                const elementTop = element.getBoundingClientRect().top;
-
-                if (elementTop < triggerBottom) {
-
-                    element.classList.add('active');
-
-                }
-
-            });
-
-        }
-
-        window.addEventListener('scroll', activeScrollReveal);
-
-        window.addEventListener('load', activeScrollReveal);
-
-    </script>
+¿Cómo funciona OVOCEM?
+
+</h2>
+
+<p class="section-text">
+
+Nuestro enfoque tecnológico se basa en el aprovechamiento de residuos orgánicos mediante procesos de selección, limpieza y transformación de cáscara de huevo, integrándola posteriormente con cemento convencional.
+
+El resultado es una propuesta sustentable que busca reducir residuos y aportar innovación dentro del sector de materiales de construcción.
+
+</p>
+
+</div>
+
+<div class="glass innovation fade">
+
+<h2>
+
+Economía circular aplicada a la construcción.
+
+</h2>
+
+<p>
+
+La reutilización inteligente de materiales orgánicos permite disminuir desperdicios y generar nuevas posibilidades para el futuro de la arquitectura sustentable.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROCESO -->
+
+<section class="section">
+
+<p class="section-label" style="text-align:center">
+Metodología
+</p>
+
+<h2 class="section-title"
+style="text-align:center">
+
+Etapas del proceso OVOCEM
+
+</h2>
+
+<div class="process-grid">
+
+<div class="glass process-card fade">
+
+<div class="process-number">
+01
+</div>
+
+<h3>
+Recolección
+</h3>
+
+<p>
+
+Obtención y selección de residuos orgánicos provenientes de cáscaras de huevo.
+
+</p>
+
+</div>
+
+<div class="glass process-card fade">
+
+<div class="process-number">
+02
+</div>
+
+<h3>
+Procesamiento
+</h3>
+
+<p>
+
+Limpieza y transformación del material para integrarlo de forma adecuada.
+
+</p>
+
+</div>
+
+<div class="glass process-card fade">
+
+<div class="process-number">
+03
+</div>
+
+<h3>
+Integración
+</h3>
+
+<p>
+
+Combinación con cemento convencional manteniendo compatibilidad estructural.
+
+</p>
+
+</div>
+
+<div class="glass process-card fade">
+
+<div class="process-number">
+04
+</div>
+
+<h3>
+Innovación
+</h3>
+
+<p>
+
+Desarrollo de propuestas sustentables orientadas al futuro de la construcción.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BENEFICIOS -->
+
+<section class="section">
+
+<p class="section-label" style="text-align:center">
+Beneficios
+</p>
+
+<h2 class="section-title"
+style="text-align:center">
+
+¿Por qué OVOCEM es diferente?
+
+</h2>
+
+<div class="features-grid">
+
+<div class="glass feature-card fade">
+
+<div class="feature-icon">
+🌱
+</div>
+
+<h3>
+Sostenibilidad
+</h3>
+
+<p>
+
+Promueve el aprovechamiento de residuos orgánicos mediante procesos responsables.
+
+</p>
+
+</div>
+
+<div class="glass feature-card fade">
+
+<div class="feature-icon">
+♻️
+</div>
+
+<h3>
+Economía Circular
+</h3>
+
+<p>
+
+Reduce desperdicios integrando materiales reutilizables dentro de nuevas soluciones.
+
+</p>
+
+</div>
+
+<div class="glass feature-card fade">
+
+<div class="feature-icon">
+🏗️
+</div>
+
+<h3>
+Innovación Constructiva
+</h3>
+
+<p>
+
+Explora nuevas alternativas para transformar la industria de la construcción.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ESTADÍSTICAS -->
+
+<section class="section">
+
+<p class="section-label" style="text-align:center">
+Impacto
+</p>
+
+<h2 class="section-title"
+style="text-align:center">
+
+OVOCEM en cifras
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="glass stat-card fade">
+
+<div class="stat-number">
+10%
+</div>
+
+<div class="stat-label">
+Sustitución orgánica
+</div>
+
+</div>
+
+<div class="glass stat-card fade">
+
+<div class="stat-number">
+100%
+</div>
+
+<div class="stat-label">
+Innovación sustentable
+</div>
+
+</div>
+
+<div class="glass stat-card fade">
+
+<div class="stat-number">
+1
+</div>
+
+<div class="stat-label">
+Visión ecológica
+</div>
+
+</div>
+
+<div class="glass stat-card fade">
+
+<div class="stat-number">
+∞
+</div>
+
+<div class="stat-label">
+Potencial futuro
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta fade">
+
+<h2>
+
+La tecnología sostenible redefine el futuro.
+
+</h2>
+
+<p>
+
+Descubre al equipo y la visión que impulsan OVOCEM.
+
+</p>
+
+<a href="equipo.html" class="btn">
+
+Conocer al Equipo
+
+</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h3 style="font-size:16px;font-weight:700;">
+OVOCEM
+</h3>
+
+<p style="margin-top:10px;">
+Construyendo un futuro más sostenible.
+</p>
+
+</div>
+
+<div>
+
+<p>
+Instituto Tecnológico de Pochutla
+</p>
+
+<p style="margin-top:8px;">
+San Pedro Pochutla, Oaxaca
+</p>
+
+</div>
+
+<div>
+
+<p>
+OVOCEM © 2026
+</p>
+
+<p style="margin-top:8px;">
+Innovación en materiales sustentables
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* ===== Mobile Menu ===== */
+
+const menuBtn = document.getElementById('menuBtn');
+
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuBtn.addEventListener('click',()=>{
+
+mobileMenu.classList.toggle('show');
+
+});
+
+/* ===== Reveal ===== */
+
+const observer = new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('show');
+
+}
+
+});
+
+},{threshold:.08});
+
+document.querySelectorAll('.fade').forEach(el=>{
+
+observer.observe(el);
+
+});
+
+</script>
 
 </body>
-
 </html>
